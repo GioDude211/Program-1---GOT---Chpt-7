@@ -1,0 +1,6 @@
+Statement for Program 01 - Giovanni Vecchione
+
+The program in general was not difficult, however the instructions were unclear in how to initialize the array and the vectors.
+I assumed that the 2D array had to have a fixed size since that is how C++ works. Therefore that is why I printed empty elements as NULL.
+Secondly I assumed that the 2 parrallel vectors matched to each other where the vector for the armies were only one size for each kingdom and there
+needs to be 7 entries since its seven kingdoms. Other than that the program was simple, just need the instructions to be clear.

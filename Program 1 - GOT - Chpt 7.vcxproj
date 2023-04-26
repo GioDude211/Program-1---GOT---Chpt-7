@@ -132,6 +132,9 @@
   <ItemGroup>
     <ClInclude Include="includeHeader1.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="statementProgram01.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
