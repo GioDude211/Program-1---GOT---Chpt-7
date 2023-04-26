@@ -1,175 +1,93 @@
-// Programmer: Giovanni Vecchione
-// Program 1 : GOT Array and Vectors
-// Course: ITSE 2331 - Adv C++
-// Date:1/19/23
-
-//Incomplete Did not have enough time:
-//Character 2D array works
-//Kingdom vecotrs do not work
-
 #include "includeHeader1.h"
 
-void createCharacter();
+void printArr(std::string arr[10][10]);
 
-//void createKingdom();
+
 
 int main() {
-	string createCharacterTest;
-	string createKingdomTest;
-
-	cout << "Character & Dragon data entry:" << endl;
-	cout << "Would you like to enter a character?(y/n)" << endl;
-	getline(cin, createCharacterTest);
-
-	if (createCharacterTest == "y")
-	{
-		createCharacter();
-
-	}
+	//part 1:
+	bool exitLoop = false;
+	std::string inputVal;
+	std:: string characterArr[10][10];
+	int count = 0;
+	int count2 = 0;
 	
-	/*
-	
-	cout << "Kingdom & Size data entry:" << endl;
-	cout << "Would you like to enter a kingdom? (y/n)" << endl;
-	getline(cin, createKingdomTest);
+	std::cout << "Character & Dragon Data Entry:\n";
 
-	if (createKingdomTest == "y")
-	{
-		createKingdom();
-	}
-	
-	*/
-	
-	
-	return 0;
-}
+	do {
+		
+		std::cout << "Would you like to enter a character? (y/n)\n";
+		std::getline(std::cin, inputVal);
+		
+		if (inputVal == "y") {
 
-void createCharacter() {
+			std::cout << "Enter Character Name: \n";
+			std::getline(std::cin, inputVal);
+			characterArr[count][0] = inputVal;
 
-	string createCharacterAgain = "y";		//Determines if user wants to create character
-	string anEntry;							//Input from user
-	string numberOfDragons;					//Input number of dragons from user
-	int numOfDragonsInteger;				//Converts string to int version	
-	string dragonName;						//Holds dragon name input from user
-	string characterName;					//Holds Character name input from user
-	int numberOfCharacters = 0;				//Holds number of character names
-	const int maxSizeOfArray = 10;			//Max Size of the Array
+			std::cout << "How many dragons would you like to enter for the character?\n";
+			std::getline(std::cin, inputVal);
 
-	const unsigned int dragonsNames = maxSizeOfArray;
-	const unsigned int characterNames = maxSizeOfArray;
-	array < array < string, dragonsNames>, characterNames> GOT2DArray{};
+			count2 = stoi(inputVal);
 
+			for (int i = 0; i < count2; i++) {
+				std::cout << "Enter the name of the dragon " << i + 1<< ":\n";
+				std::getline(std::cin, inputVal);
 
-
-	//Find a early exit on the create characters
-
-	if (createCharacterAgain == "y") {
-
-		while (numberOfCharacters < maxSizeOfArray && createCharacterAgain == "y")
-		{
-
-			cout << "Enter the character name: " << endl;
-			getline(cin, characterName);
-
-			GOT2DArray[numberOfCharacters][0] = characterName;
-
-			cout << "How many dragons would you like to enter for the character?" << endl;
-			getline(cin, numberOfDragons);
-
-			numOfDragonsInteger = stoi(numberOfDragons);
-
-
-			for (int i = 0; i < numOfDragonsInteger; i++)
-			{
-
-				cout << "Enter name of Dragon " << i << ":" << endl;
-
-				getline(cin, dragonName);
-
-				GOT2DArray[numberOfCharacters][i] = dragonName;
-
+				characterArr[count][i + 1] = inputVal;
 			}
-
-			numberOfCharacters++;
-
-			cout << "Would you like to create another character?" << endl;
-			getline(cin, createCharacterAgain);
-
-
 		}
 
-	}
+		std::cout << "Would you like to enter another character?(y/n)\n";
+		std::getline(std::cin, inputVal);
 
-	//Displays the 2D Array
-	cout << "Printing 2D Array:" << endl << endl;
-
-	int cols = sizeof(GOT2DArray[0]) / sizeof(GOT2DArray[0][0]);
-
-	for (int i = 0; i < numberOfCharacters; i++)
-	{
-
-		for (int j = 0; j < cols; j++ )
-		{
-			cout << GOT2DArray[i][j] << endl;
-		}
-	}
-
-
-}
-
-
-
-//Incomplete - didnt have enough time
-//Had issues inputing values into the vecotrs
-
-/*
-* 
-* void createKingdom() {
-	string anEntry;							//Input from user
-	string numberOfKingdomsStr;
-	int numberOfKingdomsInt = 0;				//converts to int 
-	int numberOfArmiesInt = 0;
-
-	string kingdomName;						//Holds kingdom name input from user
-	string sizeOfArmy;
-
-	bool correctAmount = false;
-	vector<string> kingdomName;
-	vector<string> kingdomArmy;
-
-
-	while (correctAmount = false) {
-		cout << "How many kingdoms would you like to create? (must be 7 or greater)" << endl;
-		getline(cin, numberOfKingdomsStr);
-
-		numberOfKingdomsInt = stoi(numberOfKingdomsStr);
-		numberOfArmiesInt = numberOfKingdomsInt;
-
-		if (numberOfKingdomsInt < 7) {
-			cout << "Incorrect number of kingdoms, must be 7 or greater" << endl;
-			correctAmount = false;
+		if (inputVal == "y") {
+			exitLoop = false;
 		}
 
 		else {
-			correctAmount = true;
+			std::cout << "Exiting Character & Dragon Array...\n";
+			printArr(characterArr);
+			exitLoop = true;
 		}
 
-	}
+		count++;
+
+	} while (exitLoop != true);
 
 
-	//ISSUE AT THIS PART
-	for(int i = 0; i < numberOfKingdomsInt; i++)
-	{
-		cout << "Enter kingdom " << i + 1 << " name: " << endl;
-		cin >> anEntry;
+	bool exitLoop2 = false;
 
-		kingdomName.push_back(anEntry);
+	
 
-		cout << "What is the size of the army?" << endl;
-		cin >> anEntry;
 
-		kingdomArmy.push_back(anEntry);
-		
-	}
+	return 0;
 }
-*/
+
+
+void printArr(std::string arr[10][10]) {
+	std::cout << "Printing Character & Dragons Array...\n";
+
+	for (int i = 0; i < 10; i++){
+		std::cout << "Name of Character: ";
+		std::cout << arr[i][0] << std::endl;
+		
+		for (int j = 1; j < 10; j++) {
+
+			std::cout << "Name of Dragon " << j + 1 << ": ";
+
+			if (!arr[i][j].empty()) {
+				std::cout << arr[i][j] << std::endl;
+			}
+
+			else {
+				std::cout << "NULL\n";
+			}
+			
+		}
+
+		std:: cout << std:: endl;
+	}
+
+
+}
