@@ -1,5 +1,6 @@
 #include "includeHeader1.h"
 
+void printVec(vector < std::string> nameOfKindgoms, vector <int> sizeOfArmies);
 void printArr(std::string arr[10][10]);
 
 
@@ -57,11 +58,48 @@ int main() {
 
 
 	bool exitLoop2 = false;
+	vector < std::string> nameOfKindgoms;
+	vector <int> sizeOfArmies;
+	int count3 = 0;
 
+	std::cout << std::endl;
+
+	for (int i = 0; i < 7; i++) {
+
+		std::cout << "Enter name of Kingdom " << i + 1 << ":\n";
+		std::getline(std::cin, inputVal);
+
+		nameOfKindgoms.push_back(inputVal);
+
+		std::cout << "Input size of army for kingdom" << i + 1 << ":\n";
+		std::getline(std::cin, inputVal);
+			
+		sizeOfArmies.push_back(stoi(inputVal));
+
+	}
 	
+	printVec(nameOfKindgoms, sizeOfArmies);
 
 
 	return 0;
+}
+
+void printVec(vector < std::string> nameOfKindgoms, vector <int> sizeOfArmies) {
+
+	std::cout << "Printing Info of Seven Kingdoms:\n";
+
+	for (int i = 0; i < 7; i++) {
+
+		std::cout << "Name of Kingdom" << i + 1 << " : ";
+		std::cout << nameOfKindgoms[i] << std::endl;
+
+		std::cout << "Size of Army:\n";
+		std::cout << sizeOfArmies[i] << std::endl;
+
+		std::cout << std::endl;
+
+	}
+
 }
 
 
